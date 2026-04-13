@@ -17,13 +17,10 @@ os.makedirs(OUT_DIR, exist_ok=True)
 def extract_tic_from_curl_line(line):
     """
     Extract TIC ID from a MAST curl line.
-    Filename pattern: tess<timestamp>-s<sector>-<ticid>-<seq>-<ver>_lc.fits
-    e.g. tess2018206045859-s0001-0000000025155310-0120-s_lc.fits
-    We grab the long numeric field after the sector field.
     """
     match = re.search(r'-s\d+-(\d+)-', line)
     if match:
-        return match.group(1).lstrip('0') or '0'
+        return match.group(1)
     return None
 
 
