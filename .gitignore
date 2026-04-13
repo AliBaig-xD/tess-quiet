@@ -1,29 +1,19 @@
-# GCP-side only — never commit these
+# Python environment
+env/
+
+# Data and results (live on GCP only)
 data/
 results/
 logs/
-env/
 
-# Python
+# Python cache
 __pycache__/
-*.py[cod]
+*.pyc
 *.pyo
-*.pyd
-.Python
-*.egg-info/
-dist/
-build/
-*.egg
-
-# Jupyter
-.ipynb_checkpoints/
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Streamlit
-.streamlit/
+.pytest_cache/
 
 # Lightkurve cache (on GCP)
 .lightkurve-cache/
+
+# OS
+.DS_Store

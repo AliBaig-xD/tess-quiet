@@ -1,9 +1,16 @@
+"""
+Phase J — Cluster Stability Check
+Runs clustering 10 times with different random seeds and measures what fraction
+of runs each star is assigned to a real cluster (not noise). Unstable clusters
+are flagged and excluded from downstream phases.
+Output: results/anomaly_clusters_stable.parquet
+"""
+
 import numpy as np
 import pandas as pd
 import umap
 import hdbscan
 from sklearn.preprocessing import StandardScaler
-from collections import Counter
 
 ANOMALIES_FILE  = 'results/anomalies_scored.parquet'
 CLUSTER_FILE    = 'results/anomaly_clusters.parquet'
@@ -22,9 +29,12 @@ def run_clustering(X_scaled, seed):
     return clusterer.fit_predict(X_umap)
 
 def main():
-    df       = pd.read_parquet(ANOMALIES_FILE)
-    clusters = pd.read_parquet(CLUSTER_FILE)[['tic_id', 'cluster']]
-    df       = df.merge(clusters, on='tic_id', how='left')
+    df = pd.read_parquet(ANOMALIES_FILE)
+
+    # Merge cluster labels AND umap coordinates from the primary clustering run.
+    # umap_x/umap_y must be preserved all the way to the atlas app.
+    clusters = pd.read_parquet(CLUSTER_FILE)[['tic_id', 'cluster', 'umap_x', 'umap_y']]
+    df = df.merge(clusters, on='tic_id', how='left')
 
     X        = df[LATENT_COLS].values.astype(np.float32)
     X_scaled = StandardScaler().fit_transform(X)
@@ -41,8 +51,7 @@ def main():
 
     all_run_labels = np.array(all_run_labels)  # (N_RUNS, N_STARS)
 
-    # For each star: what cluster does it most often appear in (across runs)?
-    # Stability = fraction of runs where it's in a cluster (not noise = -1)
+    # Stability = fraction of runs where the star lands in any real cluster (not noise)
     stability_scores = []
     for star_idx in range(len(df)):
         star_labels = all_run_labels[:, star_idx]

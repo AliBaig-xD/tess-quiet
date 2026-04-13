@@ -1,3 +1,12 @@
+"""
+Phase L — Multi-Sector Repeatability Validation
+For each anomaly star that passed artifact checks, fetches light curves from
+sectors outside the training set (1–5) and checks whether the anomaly repeats.
+A star is considered anomalous in a secondary sector if its delta std exceeds
+the P90 of the original anomaly population's delta std (data-derived threshold).
+Output: results/anomaly_clusters_validated.parquet
+"""
+
 import numpy as np
 import pandas as pd
 import lightkurve as lk
@@ -5,16 +14,13 @@ from scipy.interpolate import interp1d
 from tqdm import tqdm
 
 CLUSTER_FILE = 'results/anomaly_clusters_checked.parquet'
+FLUX_FILE    = 'data/processed/flux_matrix.parquet'
 OUT_FILE     = 'results/anomaly_clusters_validated.parquet'
 
 N_POINTS          = 1024
-REPEATABILITY_MIN = 0.30  # Star needs anomaly in ≥30% of observed sectors to count
-
-# Anomaly threshold for secondary sectors:
-# A star is anomalous in a sector if its delta std is in the top 10%
-# of the ORIGINAL anomaly population's delta std.
-# We use a fixed threshold derived from the main experiment's P90 delta strength.
-DELTA_ANOMALY_THRESHOLD_SIGMA = 2.0  # Signal must be > 2 std above the sector baseline
+REPEATABILITY_MIN = 0.30   # Star needs anomaly in ≥30% of observed sectors to count
+MAX_EXTRA_SECTORS = 5      # Check up to this many additional sectors per star
+ORIG_SECTORS      = set(range(1, 6))  # Sectors used in training
 
 
 def normalize_and_resample(time, flux, n_points=N_POINTS):
@@ -41,9 +47,8 @@ def normalize_and_resample(time, flux, n_points=N_POINTS):
 
 def compute_delta_strength(tic_id, sector):
     """
-    Download light curve for a given TIC ID and sector.
-    Returns the std of the delta flux (SAP - PDCSAP), or None if unavailable.
-    This is our proxy for 'anomaly present in this sector'.
+    Download the SPOC light curve for tic_id/sector and return the std of
+    (normalised SAP − normalised PDCSAP). Returns None if unavailable.
     """
     try:
         search = lk.search_lightcurve(
@@ -53,76 +58,81 @@ def compute_delta_strength(tic_id, sector):
         if len(search) == 0:
             return None
 
-        lc = search[0].download(flux_column='sap_flux')
-        if lc is None:
-            return None
-
-        # Also get PDCSAP
+        lc      = search[0].download(flux_column='sap_flux')
         lc_full = search[0].download()
-        if lc_full is None:
+        if lc is None or lc_full is None:
             return None
 
         sap_r    = normalize_and_resample(lc.time.value, lc.flux.value)
         pdcsap_r = normalize_and_resample(lc_full.time.value, lc_full.flux.value)
-
         if sap_r is None or pdcsap_r is None:
             return None
 
-        delta = sap_r - pdcsap_r
-        return np.std(delta)
+        return float(np.std(sap_r - pdcsap_r))
 
     except Exception:
         return None
 
 
 def get_all_sectors_for_tic(tic_id):
-    """Return list of all TESS sectors where this TIC was observed at 2-min cadence."""
+    """Return sorted list of TESS SPOC 2-min sectors for this TIC ID."""
     try:
         results = lk.search_lightcurve(
             f'TIC {tic_id}', mission='TESS', author='SPOC', exptime=120
         )
         if len(results) == 0:
             return []
-        return [int(r.mission[0].split('Sector')[1].strip())
-                for r in results.table.iterrows()
-                if 'Sector' in str(r)]
+        sectors = []
+        for mission_str in results.table['mission']:
+            try:
+                s = int(str(mission_str).split()[-1])
+                sectors.append(s)
+            except Exception:
+                pass
+        return sorted(set(sectors))   # sorted → deterministic sector selection
     except Exception:
-        # Fallback: extract sector numbers from the search result table
-        try:
-            sectors = []
-            for row in results:
-                try:
-                    s = int(str(row.table['mission'][0]).split()[-1])
-                    sectors.append(s)
-                except Exception:
-                    pass
-            return list(set(sectors))
-        except Exception:
-            return []
+        return []
+
+
+def derive_delta_threshold(flux_file, anomaly_tic_ids):
+    """
+    Compute P90 of delta-std across the original anomaly population.
+    This is the data-derived threshold a secondary sector must exceed
+    for a star to be counted as anomalous there.
+    """
+    flux_df = pd.read_parquet(flux_file, columns=['tic_id', 'flux_sap', 'flux_pdcsap'])
+    sub     = flux_df[flux_df['tic_id'].astype(str).isin(anomaly_tic_ids)]
+    delta_stds = []
+    for _, row in sub.iterrows():
+        sap    = np.array(row['flux_sap'],    dtype=np.float32)
+        pdcsap = np.array(row['flux_pdcsap'], dtype=np.float32)
+        delta_stds.append(float(np.std(sap - pdcsap)))
+    threshold = float(np.percentile(delta_stds, 90))
+    print(f"  Delta-std P90 across {len(delta_stds)} anomaly stars: {threshold:.4f}")
+    return threshold
 
 
 def main():
     df = pd.read_parquet(CLUSTER_FILE)
 
-    # Only validate stars in clusters that passed artifact checks
     candidates = df[~df['artifact_flagged'] & (df['cluster'] >= 0)].copy()
-    print(f"Validating {len(candidates)} stars across {candidates['cluster'].nunique()} clusters")
+    print(f"Validating {len(candidates)} stars across "
+          f"{candidates['cluster'].nunique()} clusters")
 
-    # The original sectors are 1–5. Baseline delta strength per star comes from
-    # the original experiment. We use a simple proxy: std of flux_delta is our measure.
-    # For secondary sectors, we fetch on-demand via lightkurve (cached locally).
+    # Derive the anomaly threshold from the actual data distribution
+    print("Deriving repeatability threshold from original anomaly population...")
+    anomaly_ids       = set(candidates['tic_id'].astype(str))
+    delta_threshold   = derive_delta_threshold(FLUX_FILE, anomaly_ids)
+    print(f"  A secondary sector is 'anomalous' if delta_std > {delta_threshold:.4f}")
 
     repeatability_results = []
-    skipped = 0
 
     for _, row in tqdm(candidates.iterrows(), total=len(candidates),
                        desc="Multi-sector validation"):
-        tic_id    = str(row['tic_id'])
-        orig_sec  = int(str(row['filepath']).split('sector')[1][0])  # From filepath
+        tic_id = str(row['tic_id'])
 
-        # Find all other sectors where this star was observed
-        all_sectors = get_all_sectors_for_tic(tic_id)
-        other_sectors = [s for s in all_sectors if s not in range(1, 6)]
+        all_sectors   = get_all_sectors_for_tic(tic_id)
+        other_sectors = [s for s in all_sectors if s not in ORIG_SECTORS]
 
         if not other_sectors:
             repeatability_results.append({
@@ -133,19 +143,15 @@ def main():
             })
             continue
 
-        # Original baseline: sap_pdcsap_ratio from Phase F
-        baseline_ratio = row.get('sap_pdcsap_ratio', 1.0)
-
         n_anomalous = 0
         n_checked   = 0
 
-        for sec in other_sectors[:5]:  # Check up to 5 additional sectors per star
+        for sec in other_sectors[:MAX_EXTRA_SECTORS]:
             delta_strength = compute_delta_strength(tic_id, sec)
             if delta_strength is None:
                 continue
             n_checked += 1
-            # Anomalous if delta std is meaningfully large relative to the baseline
-            if delta_strength > DELTA_ANOMALY_THRESHOLD_SIGMA * 0.1:
+            if delta_strength > delta_threshold:
                 n_anomalous += 1
 
         repeatability_score = n_anomalous / n_checked if n_checked > 0 else 0.0
@@ -159,12 +165,10 @@ def main():
     rep_df = pd.DataFrame(repeatability_results)
     df     = df.merge(rep_df, on='tic_id', how='left')
 
-    # Fill NaN for stars not in candidates
-    df['repeatability_score']  = df['repeatability_score'].fillna(0.0)
-    df['sectors_checked']      = df['sectors_checked'].fillna(0).astype(int)
-    df['sectors_anomalous']    = df['sectors_anomalous'].fillna(0).astype(int)
+    df['repeatability_score'] = df['repeatability_score'].fillna(0.0)
+    df['sectors_checked']     = df['sectors_checked'].fillna(0).astype(int)
+    df['sectors_anomalous']   = df['sectors_anomalous'].fillna(0).astype(int)
 
-    # Cluster-level repeatability summary
     print("\nCluster repeatability summary:")
     for cid in sorted(df['cluster'].unique()):
         if cid < 0:
@@ -184,6 +188,7 @@ def main():
 
     df.to_parquet(OUT_FILE, index=False)
     print(f"\nSaved to {OUT_FILE}")
+
 
 if __name__ == '__main__':
     main()

@@ -1,3 +1,10 @@
+"""
+Phase F — Select Anomalies with SAP/PDCSAP Ratio Filter
+Selects top 1% of stars by combined anomaly score, then filters to those
+where SAP signal is substantially stronger than PDCSAP (i.e. signal was suppressed).
+Output: results/anomalies.parquet
+"""
+
 import numpy as np
 import pandas as pd
 

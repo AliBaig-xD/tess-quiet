@@ -1,29 +1,26 @@
-# Core ML / GPU
-torch
-torchvision
-
-# TESS / Astronomy
-lightkurve
-astroquery
-astropy
-
-# Data
-pandas
+# Core scientific computing
 numpy
+pandas
 scipy
+astropy
 pyarrow
 
-# ML utilities
-scikit-learn
+# TESS data access
+lightkurve
+astroquery
+
+# Deep learning (install with CUDA separately on GCP — see README)
+# pip install torch --index-url https://download.pytorch.org/whl/cu118
+torch
+
+# Dimensionality reduction & clustering
 umap-learn
 hdbscan
+scikit-learn
 
-# Progress / display
-tqdm
+# Visualisation & app
 matplotlib
-
-# App
 streamlit
 
-# HTTP
-requests
+# Progress bars
+tqdm

@@ -83,10 +83,13 @@ class ConvAutoencoder(nn.Module):
 
 def train_model(flux_array, model_path, label):
     """Train one autoencoder. Returns (errors, latents) numpy arrays."""
-    device    = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    # num_workers > 0 can deadlock on some Linux/GCP setups without fork context
+    num_workers = 4 if torch.cuda.is_available() else 0
+
     dataset   = FluxDataset(flux_array)
     loader    = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True,
-                           num_workers=4, pin_memory=True)
+                           num_workers=num_workers, pin_memory=(num_workers > 0))
     model     = ConvAutoencoder(LATENT_DIM).to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=LR)
     criterion = nn.MSELoss()
@@ -112,7 +115,7 @@ def train_model(flux_array, model_path, label):
     # Extract latents and per-sample reconstruction errors
     model.eval()
     eval_loader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=False,
-                             num_workers=4, pin_memory=True)
+                             num_workers=num_workers, pin_memory=(num_workers > 0))
     all_latents, all_errors = [], []
     with torch.no_grad():
         for batch in tqdm(eval_loader, desc=f"  Extracting {label}", leave=False):
@@ -146,7 +149,7 @@ def main():
     latent_df.insert(0, 'tic_id', df['tic_id'].values)
     latent_df.to_parquet(LATENT_SAP_OUT, index=False)
 
-    # Save delta latents separately (useful for Phase F ratio check)
+    # Save delta latents separately
     latent_delta_df = pd.DataFrame(latents_delta,
                                    columns=[f'zd_{i}' for i in range(LATENT_DIM)])
     latent_delta_df.insert(0, 'tic_id', df['tic_id'].values)
