@@ -1,0 +1,29 @@
+# Core ML / GPU
+torch
+torchvision
+
+# TESS / Astronomy
+lightkurve
+astroquery
+astropy
+
+# Data
+pandas
+numpy
+scipy
+pyarrow
+
+# ML utilities
+scikit-learn
+umap-learn
+hdbscan
+
+# Progress / display
+tqdm
+matplotlib
+
+# App
+streamlit
+
+# HTTP
+requests

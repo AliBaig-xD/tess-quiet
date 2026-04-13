@@ -1,0 +1,29 @@
+# GCP-side only — never commit these
+data/
+results/
+logs/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/
+
+# Lightkurve cache (on GCP)
+.lightkurve-cache/
