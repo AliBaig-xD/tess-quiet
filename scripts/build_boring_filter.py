@@ -21,7 +21,7 @@ def load_all_tic_ids():
 def load_tess_svc_ids():
     df = pd.read_csv(TESS_SVC_FILE)
     # Verify column name after download
-    col = 'ticid'
+    col = 'tess_id'
     if col not in df.columns:
         col = [c for c in df.columns if 'tic' in c.lower()][0]
         print(f"Using column '{col}' for TIC IDs from TESS-SVC")
