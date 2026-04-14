@@ -15,17 +15,24 @@ OUT_FILE         = 'data/boring_tic_ids.txt'
 
 def load_all_tic_ids():
     with open(ALL_TIC_IDS_FILE) as f:
-        return set(line.strip() for line in f if line.strip())
+        # Strip leading zeros to match TESS-SVC integer format
+        return set(str(int(line.strip())) for line in f if line.strip())
 
 
 def load_tess_svc_ids():
     df = pd.read_csv(TESS_SVC_FILE)
-    # Verify column name after download
+    # TESS-SVC uses 'tess_id' as the TIC identifier column
     col = 'tess_id'
     if col not in df.columns:
-        col = [c for c in df.columns if 'tic' in c.lower()][0]
-        print(f"Using column '{col}' for TIC IDs from TESS-SVC")
-    return set(df[col].astype(str))
+        # fallback: find any column with 'id' in the name
+        candidates = [c for c in df.columns if c.lower().endswith('id')]
+        if not candidates:
+            raise ValueError(f"Cannot find TIC ID column. Columns: {df.columns.tolist()}")
+        col = candidates[0]
+        print(f"Warning: 'tess_id' not found, using '{col}'")
+    ids = set(df[col].astype(str).str.strip())
+    print(f"  Sample TESS-SVC IDs: {list(ids)[:3]}")
+    return ids
 
 
 def query_simbad_variable_ids(tic_ids):

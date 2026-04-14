@@ -46,6 +46,14 @@ def main():
     print(f"  After SAP/PDCSAP ratio filter (≥{SAP_PDCSAP_RATIO_THRESHOLD}x): "
           f"{len(anomalies)} stars (removed {before - len(anomalies)})")
 
+    # Deduplicate: flux_matrix has one row per star-sector so a star observed
+    # in multiple sectors appears multiple times. Keep highest combined_score.
+    before_dedup = len(anomalies)
+    anomalies = anomalies.sort_values('combined_score', ascending=False)
+    anomalies = anomalies.drop_duplicates(subset='tic_id', keep='first')
+    print(f"  After dedup (multi-sector rows): {len(anomalies)} unique stars "
+          f"(removed {before_dedup - len(anomalies)} duplicate rows)")
+
     # Attach ratio values
     anomalies = anomalies.merge(
         flux_sub[['tic_id', 'sap_strength', 'pdcsap_strength', 'sap_pdcsap_ratio']],

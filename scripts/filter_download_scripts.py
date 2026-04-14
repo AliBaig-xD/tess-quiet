@@ -20,7 +20,7 @@ def extract_tic_from_curl_line(line):
     """
     match = re.search(r'-s\d+-(\d+)-', line)
     if match:
-        return match.group(1)
+        return str(int(match.group(1)))
     return None
 
 
