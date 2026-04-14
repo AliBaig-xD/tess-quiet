@@ -1,0 +1,9 @@
+Loading all TIC IDs...
+  Total: 54133
+Loading TESS-SVC known variable IDs...
+  Known variables in TESS-SVC: 84046
+  After TESS-SVC removal: 54133
+Querying SIMBAD for additional known variables...
+  Additional known variables in SIMBAD: 0
+  Final boring star count: 54133
+Saved to data/boring_tic_ids.txt

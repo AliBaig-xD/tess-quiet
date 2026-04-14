@@ -1,0 +1,3 @@
+Found 87865 FITS files
+Processed: 87788 stars | Skipped: 77
+Saved to data/processed/flux_matrix.parquet  (87788 stars × 1024 pts × 3 channels)

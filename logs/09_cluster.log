@@ -1,0 +1,45 @@
+Clustering 700 anomaly stars in 16D latent space
+Running UMAP 2D (visualization)...
+Running UMAP 5D (clustering)...
+Running HDBSCAN...
+Found 38 clusters, 27 noise points
+  Noise -1: 27 stars
+  Cluster 0: 10 stars
+  Cluster 1: 25 stars
+  Cluster 2: 18 stars
+  Cluster 3: 15 stars
+  Cluster 4: 13 stars
+  Cluster 5: 11 stars
+  Cluster 6: 15 stars
+  Cluster 7: 16 stars
+  Cluster 8: 36 stars
+  Cluster 9: 14 stars
+  Cluster 10: 22 stars
+  Cluster 11: 31 stars
+  Cluster 12: 21 stars
+  Cluster 13: 11 stars
+  Cluster 14: 15 stars
+  Cluster 15: 15 stars
+  Cluster 16: 18 stars
+  Cluster 17: 19 stars
+  Cluster 18: 26 stars
+  Cluster 19: 14 stars
+  Cluster 20: 18 stars
+  Cluster 21: 18 stars
+  Cluster 22: 22 stars
+  Cluster 23: 28 stars
+  Cluster 24: 16 stars
+  Cluster 25: 15 stars
+  Cluster 26: 25 stars
+  Cluster 27: 10 stars
+  Cluster 28: 24 stars
+  Cluster 29: 11 stars
+  Cluster 30: 19 stars
+  Cluster 31: 19 stars
+  Cluster 32: 16 stars
+  Cluster 33: 22 stars
+  Cluster 34: 13 stars
+  Cluster 35: 11 stars
+  Cluster 36: 11 stars
+  Cluster 37: 10 stars
+Saved to results/anomaly_clusters.parquet

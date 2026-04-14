@@ -1,0 +1,4 @@
+Combined score threshold (P99): 0.977493
+  Stars above threshold: 878
+  After SAP/PDCSAP ratio filter (≥1.5x): 65 stars (removed 813)
+Saved 700 anomalies to results/anomalies.parquet

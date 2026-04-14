@@ -1,0 +1,3 @@
+Computing kNN latent density scores (k=10) for 700 anomaly stars...
+Saved 700 scored anomalies to results/anomalies_scored.parquet
+Top 10 final scores: [1.1045 1.1045 1.1045 1.0569 1.0569 1.0569 1.0169 1.0169 1.0169 0.9806]
