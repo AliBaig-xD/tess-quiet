@@ -39,6 +39,10 @@ def main():
     # Avoid division by zero
     flux_sub['pdcsap_strength'] = flux_sub['pdcsap_strength'].replace(0, 1e-9)
     flux_sub['sap_pdcsap_ratio'] = flux_sub['sap_strength'] / flux_sub['pdcsap_strength']
+    
+    # Deduplicate flux_sub: one row per TIC, keep the sector with highest ratio
+    flux_sub = flux_sub.sort_values('sap_pdcsap_ratio', ascending=False)
+    flux_sub = flux_sub.drop_duplicates(subset='tic_id', keep='first')
 
     before = len(anomalies)
     passing_ids = flux_sub[flux_sub['sap_pdcsap_ratio'] >= SAP_PDCSAP_RATIO_THRESHOLD]['tic_id']
