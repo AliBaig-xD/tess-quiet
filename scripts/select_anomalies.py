@@ -63,6 +63,9 @@ def main():
         flux_sub[['tic_id', 'sap_strength', 'pdcsap_strength', 'sap_pdcsap_ratio']],
         on='tic_id', how='left'
     )
+    
+    # Deduplicate latents: one row per TIC (latent vectors are per star-sector)
+    latents = latents.drop_duplicates(subset='tic_id', keep='first')
 
     # Merge with latent vectors
     anomalies = anomalies.merge(latents, on='tic_id', how='left')
