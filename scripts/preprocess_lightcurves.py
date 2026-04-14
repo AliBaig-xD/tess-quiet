@@ -13,6 +13,7 @@ from astropy.io import fits
 from scipy.interpolate import interp1d
 from tqdm import tqdm
 
+BORING_IDS_FILE = 'data/boring_tic_ids.txt'
 RAW_DIR     = 'data/raw'
 OUT_PARQUET = 'data/processed/flux_matrix.parquet'
 N_POINTS    = 1024
@@ -84,6 +85,11 @@ def resample(time, flux, n_points=N_POINTS):
 def main():
     fits_files = glob.glob(os.path.join(RAW_DIR, '**', '*.fits'), recursive=True)
     print(f"Found {len(fits_files)} FITS files")
+    
+    # Load boring IDs to exclude known variables from the flux matrix
+    with open(BORING_IDS_FILE) as f:
+        boring_ids = set(line.strip() for line in f if line.strip())
+    print(f"Boring IDs loaded: {len(boring_ids)}")
 
     records = []
     skipped = 0
@@ -95,6 +101,10 @@ def main():
             continue
 
         time, sap, pdcsap, tic_id = result
+        
+        if tic_id not in boring_ids:
+            skipped += 1
+            continue
 
         sap_norm    = normalize(sap)
         pdcsap_norm = normalize(pdcsap)
