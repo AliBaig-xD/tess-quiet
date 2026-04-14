@@ -1,117 +1,117 @@
 Loading flux matrix...
-  Stars: 87788  |  Points per star: 1024
+  Stars: 50287  |  Points per star: 1024
 
 Training Model-A (SAP) on cuda...
-  Epoch 01/50: loss = 0.355915
-  Epoch 02/50: loss = 0.331237
-  Epoch 03/50: loss = 0.328096
-  Epoch 04/50: loss = 0.326368
-  Epoch 05/50: loss = 0.325059
-  Epoch 06/50: loss = 0.324139
-  Epoch 07/50: loss = 0.323360
-  Epoch 08/50: loss = 0.322568
-  Epoch 09/50: loss = 0.322150
-  Epoch 10/50: loss = 0.321731
-  Epoch 11/50: loss = 0.321728
-  Epoch 12/50: loss = 0.320905
-  Epoch 13/50: loss = 0.320678
-  Epoch 14/50: loss = 0.320151
-  Epoch 15/50: loss = 0.319715
-  Epoch 16/50: loss = 0.319479
-  Epoch 17/50: loss = 0.318790
-  Epoch 18/50: loss = 0.318430
-  Epoch 19/50: loss = 0.317962
-  Epoch 20/50: loss = 0.317573
-  Epoch 21/50: loss = 0.317186
-  Epoch 22/50: loss = 0.316774
-  Epoch 23/50: loss = 0.316325
-  Epoch 24/50: loss = 0.315968
-  Epoch 25/50: loss = 0.315603
-  Epoch 26/50: loss = 0.315401
-  Epoch 27/50: loss = 0.315196
-  Epoch 28/50: loss = 0.314985
-  Epoch 29/50: loss = 0.314564
-  Epoch 30/50: loss = 0.314392
-  Epoch 31/50: loss = 0.314177
-  Epoch 32/50: loss = 0.313957
-  Epoch 33/50: loss = 0.313700
-  Epoch 34/50: loss = 0.313507
-  Epoch 35/50: loss = 0.313269
-  Epoch 36/50: loss = 0.313074
-  Epoch 37/50: loss = 0.312931
-  Epoch 38/50: loss = 0.312770
-  Epoch 39/50: loss = 0.312598
-  Epoch 40/50: loss = 0.312537
-  Epoch 41/50: loss = 0.312443
-  Epoch 42/50: loss = 0.312210
-  Epoch 43/50: loss = 0.312100
-  Epoch 44/50: loss = 0.311998
-  Epoch 45/50: loss = 0.311823
-  Epoch 46/50: loss = 0.311596
-  Epoch 47/50: loss = 0.311506
-  Epoch 48/50: loss = 0.311436
-  Epoch 49/50: loss = 0.311365
-  Epoch 50/50: loss = 0.311208
+  Epoch 01/50: loss = 0.374426
+  Epoch 02/50: loss = 0.322809
+  Epoch 03/50: loss = 0.319687
+  Epoch 04/50: loss = 0.318341
+  Epoch 05/50: loss = 0.317139
+  Epoch 06/50: loss = 0.316166
+  Epoch 07/50: loss = 0.315513
+  Epoch 08/50: loss = 0.314651
+  Epoch 09/50: loss = 0.314364
+  Epoch 10/50: loss = 0.313723
+  Epoch 11/50: loss = 0.313218
+  Epoch 12/50: loss = 0.312842
+  Epoch 13/50: loss = 0.312494
+  Epoch 14/50: loss = 0.312123
+  Epoch 15/50: loss = 0.311791
+  Epoch 16/50: loss = 0.311560
+  Epoch 17/50: loss = 0.311489
+  Epoch 18/50: loss = 0.310864
+  Epoch 19/50: loss = 0.310807
+  Epoch 20/50: loss = 0.310632
+  Epoch 21/50: loss = 0.310397
+  Epoch 22/50: loss = 0.310415
+  Epoch 23/50: loss = 0.310080
+  Epoch 24/50: loss = 0.310002
+  Epoch 25/50: loss = 0.309796
+  Epoch 26/50: loss = 0.309632
+  Epoch 27/50: loss = 0.309541
+  Epoch 28/50: loss = 0.309396
+  Epoch 29/50: loss = 0.309259
+  Epoch 30/50: loss = 0.309192
+  Epoch 31/50: loss = 0.309183
+  Epoch 32/50: loss = 0.308793
+  Epoch 33/50: loss = 0.308850
+  Epoch 34/50: loss = 0.309196
+  Epoch 35/50: loss = 0.308670
+  Epoch 36/50: loss = 0.308619
+  Epoch 37/50: loss = 0.308563
+  Epoch 38/50: loss = 0.308353
+  Epoch 39/50: loss = 0.308358
+  Epoch 40/50: loss = 0.308301
+  Epoch 41/50: loss = 0.308223
+  Epoch 42/50: loss = 0.308097
+  Epoch 43/50: loss = 0.308090
+  Epoch 44/50: loss = 0.307979
+  Epoch 45/50: loss = 0.307813
+  Epoch 46/50: loss = 0.307918
+  Epoch 47/50: loss = 0.307771
+  Epoch 48/50: loss = 0.307722
+  Epoch 49/50: loss = 0.307559
+  Epoch 50/50: loss = 0.307604
   Model saved to results/autoencoder_sap.pt
 
 Training Model-B (delta) on cuda...
-  Epoch 01/50: loss = 0.209841
-  Epoch 02/50: loss = 0.174070
-  Epoch 03/50: loss = 0.168523
-  Epoch 04/50: loss = 0.164846
-  Epoch 05/50: loss = 0.163025
-  Epoch 06/50: loss = 0.161121
-  Epoch 07/50: loss = 0.159983
-  Epoch 08/50: loss = 0.158952
-  Epoch 09/50: loss = 0.158077
-  Epoch 10/50: loss = 0.157159
-  Epoch 11/50: loss = 0.156329
-  Epoch 12/50: loss = 0.155854
-  Epoch 13/50: loss = 0.155251
-  Epoch 14/50: loss = 0.154781
-  Epoch 15/50: loss = 0.154306
-  Epoch 16/50: loss = 0.153994
-  Epoch 17/50: loss = 0.153658
-  Epoch 18/50: loss = 0.153252
-  Epoch 19/50: loss = 0.153022
-  Epoch 20/50: loss = 0.152735
-  Epoch 21/50: loss = 0.152463
-  Epoch 22/50: loss = 0.152265
-  Epoch 23/50: loss = 0.152024
-  Epoch 24/50: loss = 0.151922
-  Epoch 25/50: loss = 0.151515
-  Epoch 26/50: loss = 0.151547
-  Epoch 27/50: loss = 0.151206
-  Epoch 28/50: loss = 0.151060
-  Epoch 29/50: loss = 0.151018
-  Epoch 30/50: loss = 0.150757
-  Epoch 31/50: loss = 0.150761
-  Epoch 32/50: loss = 0.150513
-  Epoch 33/50: loss = 0.150366
-  Epoch 34/50: loss = 0.150233
-  Epoch 35/50: loss = 0.150136
-  Epoch 36/50: loss = 0.150046
-  Epoch 37/50: loss = 0.149950
-  Epoch 38/50: loss = 0.149775
-  Epoch 39/50: loss = 0.149635
-  Epoch 40/50: loss = 0.149572
-  Epoch 41/50: loss = 0.149476
-  Epoch 42/50: loss = 0.149336
-  Epoch 43/50: loss = 0.149344
-  Epoch 44/50: loss = 0.149145
-  Epoch 45/50: loss = 0.149149
-  Epoch 46/50: loss = 0.149066
-  Epoch 47/50: loss = 0.149020
-  Epoch 48/50: loss = 0.149041
-  Epoch 49/50: loss = 0.148763
-  Epoch 50/50: loss = 0.148962
+  Epoch 01/50: loss = 0.251580
+  Epoch 02/50: loss = 0.177491
+  Epoch 03/50: loss = 0.171795
+  Epoch 04/50: loss = 0.166625
+  Epoch 05/50: loss = 0.164499
+  Epoch 06/50: loss = 0.161984
+  Epoch 07/50: loss = 0.160316
+  Epoch 08/50: loss = 0.159185
+  Epoch 09/50: loss = 0.158130
+  Epoch 10/50: loss = 0.157441
+  Epoch 11/50: loss = 0.156388
+  Epoch 12/50: loss = 0.155541
+  Epoch 13/50: loss = 0.155125
+  Epoch 14/50: loss = 0.154459
+  Epoch 15/50: loss = 0.154047
+  Epoch 16/50: loss = 0.153392
+  Epoch 17/50: loss = 0.153023
+  Epoch 18/50: loss = 0.152520
+  Epoch 19/50: loss = 0.152440
+  Epoch 20/50: loss = 0.151801
+  Epoch 21/50: loss = 0.151683
+  Epoch 22/50: loss = 0.151330
+  Epoch 23/50: loss = 0.151032
+  Epoch 24/50: loss = 0.150948
+  Epoch 25/50: loss = 0.150722
+  Epoch 26/50: loss = 0.150630
+  Epoch 27/50: loss = 0.150171
+  Epoch 28/50: loss = 0.150052
+  Epoch 29/50: loss = 0.149991
+  Epoch 30/50: loss = 0.149757
+  Epoch 31/50: loss = 0.149975
+  Epoch 32/50: loss = 0.149211
+  Epoch 33/50: loss = 0.149187
+  Epoch 34/50: loss = 0.149230
+  Epoch 35/50: loss = 0.149055
+  Epoch 36/50: loss = 0.148990
+  Epoch 37/50: loss = 0.148814
+  Epoch 38/50: loss = 0.148723
+  Epoch 39/50: loss = 0.148672
+  Epoch 40/50: loss = 0.148375
+  Epoch 41/50: loss = 0.148443
+  Epoch 42/50: loss = 0.148301
+  Epoch 43/50: loss = 0.148157
+  Epoch 44/50: loss = 0.148073
+  Epoch 45/50: loss = 0.147927
+  Epoch 46/50: loss = 0.147886
+  Epoch 47/50: loss = 0.147879
+  Epoch 48/50: loss = 0.147752
+  Epoch 49/50: loss = 0.147897
+  Epoch 50/50: loss = 0.147542
   Model saved to results/autoencoder_delta.pt
 
-recon_error_sap: mean=0.30964  std=0.22053  P99=0.91336  (878 stars above P99)
+recon_error_sap: mean=0.30690  std=0.19710  P99=0.64074  (503 stars above P99)
 
-recon_error_delta: mean=0.14771  std=0.07291  P99=0.34962  (878 stars above P99)
+recon_error_delta: mean=0.14655  std=0.07216  P99=0.34598  (503 stars above P99)
 
-combined_score: mean=0.41303  std=0.20411  P99=0.97749  (878 stars above P99)
+combined_score: mean=0.40948  std=0.17627  P99=0.82185  (503 stars above P99)
 
 Done. Outputs:
   results/autoencoder_sap.pt

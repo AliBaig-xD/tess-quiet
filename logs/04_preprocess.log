@@ -1,3 +1,4 @@
 Found 87865 FITS files
-Processed: 87788 stars | Skipped: 77
-Saved to data/processed/flux_matrix.parquet  (87788 stars × 1024 pts × 3 channels)
+Boring IDs loaded: 33135
+Processed: 50287 stars | Skipped: 37578
+Saved to data/processed/flux_matrix.parquet  (50287 stars × 1024 pts × 3 channels)

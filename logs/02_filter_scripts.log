@@ -1,5 +1,5 @@
-Sector 1: kept 15889/15889 curl lines → scripts/filtered/filtered_sector_1_lc.sh
-Sector 2: kept 15994/15994 curl lines → scripts/filtered/filtered_sector_2_lc.sh
-Sector 3: kept 15993/15993 curl lines → scripts/filtered/filtered_sector_3_lc.sh
-Sector 4: kept 19997/19997 curl lines → scripts/filtered/filtered_sector_4_lc.sh
-Sector 5: kept 19996/19996 curl lines → scripts/filtered/filtered_sector_5_lc.sh
+Sector 1: kept 8653/15889 curl lines → scripts/filtered/filtered_sector_1_lc.sh
+Sector 2: kept 9083/15994 curl lines → scripts/filtered/filtered_sector_2_lc.sh
+Sector 3: kept 9139/15993 curl lines → scripts/filtered/filtered_sector_3_lc.sh
+Sector 4: kept 12197/19997 curl lines → scripts/filtered/filtered_sector_4_lc.sh
+Sector 5: kept 11257/19996 curl lines → scripts/filtered/filtered_sector_5_lc.sh

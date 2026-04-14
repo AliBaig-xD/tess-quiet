@@ -1,84 +1,14 @@
 
 Check 1: Spatial CCD distribution...
-  Cluster 0 (n=264): 52% on one CCD — ✅ Spatially distributed
-  Cluster 1 (n=373): 51% on one CCD — ✅ Spatially distributed
-  Cluster 2 (n=402): 31% on one CCD — ✅ Spatially distributed
-  Cluster 3 (n=375): 33% on one CCD — ✅ Spatially distributed
-  Cluster 4 (n=253): 49% on one CCD — ✅ Spatially distributed
-  Cluster 5 (n=275): 55% on one CCD — ✅ Spatially distributed
-  Cluster 6 (n=303): 62% on one CCD — ✅ Spatially distributed
-  Cluster 7 (n=190): 52% on one CCD — ✅ Spatially distributed
-  Cluster 8 (n=780): 48% on one CCD — ✅ Spatially distributed
-  Cluster 9 (n=314): 100% on one CCD — ⚠️  SPATIAL ARTIFACT
-  Cluster 10 (n=502): 50% on one CCD — ✅ Spatially distributed
-  Cluster 11 (n=493): 38% on one CCD — ✅ Spatially distributed
-  Cluster 12 (n=447): 42% on one CCD — ✅ Spatially distributed
-  Cluster 13 (n=197): 63% on one CCD — ✅ Spatially distributed
-  Cluster 14 (n=315): 40% on one CCD — ✅ Spatially distributed
-  Cluster 15 (n=375): 67% on one CCD — ✅ Spatially distributed
-  Cluster 16 (n=392): 49% on one CCD — ✅ Spatially distributed
-  Cluster 17 (n=439): 57% on one CCD — ✅ Spatially distributed
-  Cluster 18 (n=302): 44% on one CCD — ✅ Spatially distributed
-  Cluster 19 (n=206): 61% on one CCD — ✅ Spatially distributed
-  Cluster 20 (n=374): 34% on one CCD — ✅ Spatially distributed
-  Cluster 21 (n=378): 34% on one CCD — ✅ Spatially distributed
-  Cluster 22 (n=508): 49% on one CCD — ✅ Spatially distributed
-  Cluster 23 (n=322): 41% on one CCD — ✅ Spatially distributed
-  Cluster 24 (n=322): 41% on one CCD — ✅ Spatially distributed
-  Cluster 25 (n=243): 51% on one CCD — ✅ Spatially distributed
-  Cluster 26 (n=469): 40% on one CCD — ✅ Spatially distributed
-  Cluster 27 (n=88): 73% on one CCD — ✅ Spatially distributed
-  Cluster 28 (n=222): 82% on one CCD — ⚠️  SPATIAL ARTIFACT
-  Cluster 29 (n=275): 55% on one CCD — ✅ Spatially distributed
-  Cluster 30 (n=441): 29% on one CCD — ✅ Spatially distributed
-  Cluster 31 (n=229): 55% on one CCD — ✅ Spatially distributed
-  Cluster 32 (n=142): 45% on one CCD — ✅ Spatially distributed
-  Cluster 33 (n=346): 75% on one CCD — ✅ Spatially distributed
-  Cluster 34 (n=115): 56% on one CCD — ✅ Spatially distributed
-  Cluster 35 (n=197): 63% on one CCD — ✅ Spatially distributed
-  Cluster 36 (n=197): 96% on one CCD — ⚠️  SPATIAL ARTIFACT
-  Cluster 37 (n=160): 78% on one CCD — ✅ Spatially distributed
+  Cluster 0 (n=20): 50% on one CCD — ✅ Spatially distributed
+  Cluster 1 (n=32): 31% on one CCD — ✅ Spatially distributed
+  Cluster 2 (n=48): 23% on one CCD — ✅ Spatially distributed
 
 Check 2: Temporal spike alignment...
   Global spike timestamps: 0/1024 (0.0%)
   Cluster 0: 0% of stars have temporal overlap — ✅ Temporally clean
   Cluster 1: 0% of stars have temporal overlap — ✅ Temporally clean
   Cluster 2: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 3: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 4: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 5: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 6: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 7: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 8: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 9: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 10: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 11: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 12: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 13: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 14: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 15: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 16: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 17: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 18: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 19: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 20: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 21: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 22: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 23: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 24: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 25: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 26: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 27: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 28: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 29: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 30: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 31: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 32: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 33: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 34: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 35: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 36: 0% of stars have temporal overlap — ✅ Temporally clean
-  Cluster 37: 0% of stars have temporal overlap — ✅ Temporally clean
 
-35 clusters passed both artifact checks
+3 clusters passed both artifact checks
 Saved to results/anomaly_clusters_checked.parquet

@@ -1,54 +1,19 @@
 Running 10 clustering runs with different seeds...
-  Run 1: 371 clusters
-  Run 2: 384 clusters
-  Run 3: 382 clusters
-  Run 4: 370 clusters
-  Run 5: 398 clusters
-  Run 6: 344 clusters
-  Run 7: 347 clusters
-  Run 8: 428 clusters
-  Run 9: 367 clusters
-  Run 10: 383 clusters
+  Run 1: 3 clusters
+  Run 2: 3 clusters
+  Run 3: 3 clusters
+  Run 4: 3 clusters
+  Run 5: 3 clusters
+  Run 6: 3 clusters
+  Run 7: 3 clusters
+  Run 8: 3 clusters
+  Run 9: 3 clusters
+  Run 10: 3 clusters
 
 Cluster stability summary:
-  Cluster 0 (n=264): mean stability = 0.95  — ✅ STABLE
-  Cluster 1 (n=373): mean stability = 0.97  — ✅ STABLE
-  Cluster 2 (n=402): mean stability = 0.97  — ✅ STABLE
-  Cluster 3 (n=375): mean stability = 0.97  — ✅ STABLE
-  Cluster 4 (n=253): mean stability = 0.97  — ✅ STABLE
-  Cluster 5 (n=275): mean stability = 0.98  — ✅ STABLE
-  Cluster 6 (n=303): mean stability = 0.97  — ✅ STABLE
-  Cluster 7 (n=190): mean stability = 0.98  — ✅ STABLE
-  Cluster 8 (n=780): mean stability = 0.97  — ✅ STABLE
-  Cluster 9 (n=314): mean stability = 0.97  — ✅ STABLE
-  Cluster 10 (n=502): mean stability = 0.98  — ✅ STABLE
-  Cluster 11 (n=493): mean stability = 0.97  — ✅ STABLE
-  Cluster 12 (n=447): mean stability = 0.97  — ✅ STABLE
-  Cluster 13 (n=197): mean stability = 0.96  — ✅ STABLE
-  Cluster 14 (n=315): mean stability = 0.97  — ✅ STABLE
-  Cluster 15 (n=375): mean stability = 0.97  — ✅ STABLE
-  Cluster 16 (n=392): mean stability = 0.96  — ✅ STABLE
-  Cluster 17 (n=439): mean stability = 0.97  — ✅ STABLE
-  Cluster 18 (n=302): mean stability = 0.98  — ✅ STABLE
-  Cluster 19 (n=206): mean stability = 0.98  — ✅ STABLE
-  Cluster 20 (n=374): mean stability = 0.97  — ✅ STABLE
-  Cluster 21 (n=378): mean stability = 0.96  — ✅ STABLE
-  Cluster 22 (n=508): mean stability = 0.97  — ✅ STABLE
-  Cluster 23 (n=322): mean stability = 0.97  — ✅ STABLE
-  Cluster 24 (n=322): mean stability = 0.97  — ✅ STABLE
-  Cluster 25 (n=243): mean stability = 0.97  — ✅ STABLE
-  Cluster 26 (n=469): mean stability = 0.97  — ✅ STABLE
-  Cluster 27 (n=88): mean stability = 0.96  — ✅ STABLE
-  Cluster 28 (n=222): mean stability = 0.96  — ✅ STABLE
-  Cluster 29 (n=275): mean stability = 0.97  — ✅ STABLE
-  Cluster 30 (n=441): mean stability = 0.97  — ✅ STABLE
-  Cluster 31 (n=229): mean stability = 0.96  — ✅ STABLE
-  Cluster 32 (n=142): mean stability = 0.98  — ✅ STABLE
-  Cluster 33 (n=346): mean stability = 0.97  — ✅ STABLE
-  Cluster 34 (n=115): mean stability = 0.97  — ✅ STABLE
-  Cluster 35 (n=197): mean stability = 0.96  — ✅ STABLE
-  Cluster 36 (n=197): mean stability = 0.96  — ✅ STABLE
-  Cluster 37 (n=160): mean stability = 0.99  — ✅ STABLE
+  Cluster 0 (n=20): mean stability = 1.00  — ✅ STABLE
+  Cluster 1 (n=32): mean stability = 1.00  — ✅ STABLE
+  Cluster 2 (n=48): mean stability = 1.00  — ✅ STABLE
 
-38 stable clusters will be carried forward
+3 stable clusters will be carried forward
 Saved to results/anomaly_clusters_stable.parquet
