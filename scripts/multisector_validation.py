@@ -3,7 +3,7 @@ Phase L — Multi-Sector Repeatability Validation
 For each anomaly star that passed artifact checks, fetches light curves from
 sectors outside the training set (1–5) and checks whether the anomaly repeats.
 A star is considered anomalous in a secondary sector if its delta std exceeds
-the P90 of the original anomaly population's delta std (data-derived threshold).
+the P75 of the original anomaly population's delta std (data-derived threshold).
 Output: results/anomaly_clusters_validated.parquet
 """
 
@@ -13,7 +13,7 @@ import lightkurve as lk
 from scipy.interpolate import interp1d
 from tqdm import tqdm
 
-CLUSTER_FILE = 'results/anomaly_clusters_checked.parquet'
+CLUSTER_FILE = 'results/anomaly_clusters_checked.parquet'  # 88 stars (Teff<7000, RUWE<8)
 FLUX_FILE    = 'data/processed/flux_matrix.parquet'
 OUT_FILE     = 'results/anomaly_clusters_validated.parquet'
 
@@ -107,8 +107,8 @@ def derive_delta_threshold(flux_file, anomaly_tic_ids):
         sap    = np.array(row['flux_sap'],    dtype=np.float32)
         pdcsap = np.array(row['flux_pdcsap'], dtype=np.float32)
         delta_stds.append(float(np.std(sap - pdcsap)))
-    threshold = float(np.percentile(delta_stds, 90))
-    print(f"  Delta-std P90 across {len(delta_stds)} anomaly stars: {threshold:.4f}")
+    threshold = float(np.percentile(delta_stds, 75))
+    print(f"  Delta-std P75 across {len(delta_stds)} anomaly stars: {threshold:.4f}")
     return threshold
 
 
@@ -123,7 +123,7 @@ def main():
     print("Deriving repeatability threshold from original anomaly population...")
     anomaly_ids       = set(candidates['tic_id'].astype(str))
     delta_threshold   = derive_delta_threshold(FLUX_FILE, anomaly_ids)
-    print(f"  A secondary sector is 'anomalous' if delta_std > {delta_threshold:.4f}")
+    print(f"  A secondary sector is 'anomalous' if delta_std > {delta_threshold:.4f} (P75 threshold)")
 
     repeatability_results = []
 

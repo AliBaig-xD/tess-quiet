@@ -1,0 +1,11 @@
+Validating 88 stars across 3 clusters
+Deriving repeatability threshold from original anomaly population...
+  Delta-std P75 across 282 anomaly stars: 1.2636
+  A secondary sector is 'anomalous' if delta_std > 1.2636 (P75 threshold)
+
+Cluster repeatability summary:
+  Cluster 0: 22% of checked stars repeatable — 🟡 Partial repeatability
+  Cluster 1: 16% of checked stars repeatable — 🟡 Partial repeatability
+  Cluster 2: 57% of checked stars repeatable — 🔴 DISCOVERY CANDIDATE
+
+Saved to results/anomaly_clusters_validated_v2.parquet
