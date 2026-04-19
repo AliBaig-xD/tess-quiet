@@ -6,6 +6,9 @@ We train two 1D convolutional autoencoders — one on raw SAP flux, one on delta
 
 Full experiment spec: `tess_quiet_stars_moonshot_spec_v1.1.md`
 
+**Paper:** https://doi.org/10.5281/zenodo.19654856
+**Dataset:** https://doi.org/10.5281/zenodo.19638863
+
 ---
 
 ## Infrastructure
